@@ -5,22 +5,22 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kblocks
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kblocks-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kblocks-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kblocks-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kblocks-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kblocks-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kblocks-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
-Requires: kblocks-bin
-Requires: kblocks-data
-Requires: kblocks-license
-Requires: kblocks-locales
+Requires: kblocks-bin = %{version}-%{release}
+Requires: kblocks-data = %{version}-%{release}
+Requires: kblocks-license = %{version}-%{release}
+Requires: kblocks-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libkdegames-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 EXTENDED
@@ -28,8 +28,8 @@ EXTENDED
 %package bin
 Summary: bin components for the kblocks package.
 Group: Binaries
-Requires: kblocks-data
-Requires: kblocks-license
+Requires: kblocks-data = %{version}-%{release}
+Requires: kblocks-license = %{version}-%{release}
 
 %description bin
 bin components for the kblocks package.
@@ -68,26 +68,26 @@ locales components for the kblocks package.
 
 
 %prep
-%setup -q -n kblocks-18.08.0
+%setup -q -n kblocks-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535426225
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549862786
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535426225
+export SOURCE_DATE_EPOCH=1549862786
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kblocks
-cp COPYING %{buildroot}/usr/share/doc/kblocks/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/kblocks/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/kblocks
+cp COPYING %{buildroot}/usr/share/package-licenses/kblocks/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/kblocks/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -123,6 +123,7 @@ popd
 /usr/share/kblocks/themes/oxygen_preview.png
 /usr/share/kxmlgui5/kblocks/kblocksui.rc
 /usr/share/metainfo/org.kde.kblocks.appdata.xml
+/usr/share/xdg/kblocks.categories
 /usr/share/xdg/kblocks.knsrc
 
 %files doc
@@ -157,9 +158,9 @@ popd
 /usr/share/doc/HTML/uk/kblocks/index.docbook
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kblocks/COPYING
-/usr/share/doc/kblocks/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kblocks/COPYING
+/usr/share/package-licenses/kblocks/COPYING.DOC
 
 %files locales -f kblocks.lang
 %defattr(-,root,root,-)
