@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kblocks
-Version  : 19.08.0
-Release  : 12
-URL      : https://download.kde.org/stable/applications/19.08.0/src/kblocks-19.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.0/src/kblocks-19.08.0.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.0/src/kblocks-19.08.0.tar.xz.sig
+Version  : 19.08.1
+Release  : 13
+URL      : https://download.kde.org/stable/applications/19.08.1/src/kblocks-19.08.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.1/src/kblocks-19.08.1.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.1/src/kblocks-19.08.1.tar.xz.sig
 Summary  : The classic falling blocks game
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -68,14 +68,14 @@ locales components for the kblocks package.
 
 
 %prep
-%setup -q -n kblocks-19.08.0
+%setup -q -n kblocks-19.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565923906
+export SOURCE_DATE_EPOCH=1567696122
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -92,7 +92,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1565923906
+export SOURCE_DATE_EPOCH=1567696122
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kblocks
 cp COPYING %{buildroot}/usr/share/package-licenses/kblocks/COPYING
