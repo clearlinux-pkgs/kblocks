@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kblocks
-Version  : 21.04.0
-Release  : 30
-URL      : https://download.kde.org/stable/release-service/21.04.0/src/kblocks-21.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.0/src/kblocks-21.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.0/src/kblocks-21.04.0.tar.xz.sig
+Version  : 21.04.2
+Release  : 31
+URL      : https://download.kde.org/stable/release-service/21.04.2/src/kblocks-21.04.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.2/src/kblocks-21.04.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.2/src/kblocks-21.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -69,15 +69,15 @@ locales components for the kblocks package.
 
 
 %prep
-%setup -q -n kblocks-21.04.0
-cd %{_builddir}/kblocks-21.04.0
+%setup -q -n kblocks-21.04.2
+cd %{_builddir}/kblocks-21.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1619206956
+export SOURCE_DATE_EPOCH=1623367217
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -93,11 +93,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1619206956
+export SOURCE_DATE_EPOCH=1623367217
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kblocks
-cp %{_builddir}/kblocks-21.04.0/COPYING %{buildroot}/usr/share/package-licenses/kblocks/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kblocks-21.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/kblocks/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/kblocks-21.04.2/COPYING %{buildroot}/usr/share/package-licenses/kblocks/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kblocks-21.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/kblocks/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
