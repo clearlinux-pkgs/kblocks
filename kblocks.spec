@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kblocks
-Version  : 21.12.3
-Release  : 39
-URL      : https://download.kde.org/stable/release-service/21.12.3/src/kblocks-21.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.3/src/kblocks-21.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.3/src/kblocks-21.12.3.tar.xz.sig
+Version  : 22.04.0
+Release  : 40
+URL      : https://download.kde.org/stable/release-service/22.04.0/src/kblocks-22.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.0/src/kblocks-22.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.0/src/kblocks-22.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GFDL-1.2 GPL-2.0
+License  : BSD-3-Clause GFDL-1.2 GPL-2.0
 Requires: kblocks-bin = %{version}-%{release}
 Requires: kblocks-data = %{version}-%{release}
 Requires: kblocks-license = %{version}-%{release}
@@ -21,7 +21,6 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
 BuildRequires : libkdegames-dev
-BuildRequires : qtbase-dev mesa-dev
 
 %description
 EXTENDED
@@ -69,15 +68,15 @@ locales components for the kblocks package.
 
 
 %prep
-%setup -q -n kblocks-21.12.3
-cd %{_builddir}/kblocks-21.12.3
+%setup -q -n kblocks-22.04.0
+cd %{_builddir}/kblocks-22.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1646538971
+export SOURCE_DATE_EPOCH=1650672334
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -93,11 +92,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1646538971
+export SOURCE_DATE_EPOCH=1650672334
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kblocks
-cp %{_builddir}/kblocks-21.12.3/COPYING %{buildroot}/usr/share/package-licenses/kblocks/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/kblocks-21.12.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/kblocks/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/kblocks-22.04.0/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kblocks/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/kblocks-22.04.0/COPYING %{buildroot}/usr/share/package-licenses/kblocks/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/kblocks-22.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/kblocks/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/kblocks-22.04.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kblocks/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 pushd clr-build
 %make_install
 popd
@@ -172,6 +173,8 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/kblocks/29fb05b49e12a380545499938c4879440bd8851e
+/usr/share/package-licenses/kblocks/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 /usr/share/package-licenses/kblocks/4cc77b90af91e615a64ae04893fdffa7939db84c
 /usr/share/package-licenses/kblocks/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 
